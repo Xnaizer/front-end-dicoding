@@ -1,0 +1,1212 @@
+Pendahuluan: Browser Object Model & Document Object Model
+JavaScript berperan dalam membuat halaman web lebih interaktif melalui Browser Object Model (BOM) dan Document Object Model (DOM). Keduanya memungkinkan perubahan dinamis yang tidak bisa dicapai hanya dengan HTML dan CSS.
+
+Dalam modul ini, Anda akan mempelajari:
+
+Peran dan fungsi BOM dalam halaman web.
+Struktur dan manipulasi DOM Tree.
+Teknik mengubah konten website menggunakan DOM.
+Jika ada pertanyaan, jangan ragu untuk bertanya di forum diskusi. Mari buat front-end lebih menarik! 🚀
+
+
+
+
+Cara JavaScript Mengontrol Website & Browser
+JavaScript mengontrol website dan browser melalui BOM dan DOM.
+
+Browser Object Model (BOM)
+
+Mengakses fitur browser melalui objek window.
+Contoh: Menampilkan pop-up dengan alert().
+Metode lain: prompt(), console, dll.
+Document Object Model (DOM)
+
+Mengontrol elemen HTML dengan objek document.
+Contoh: Mengubah teks dengan getElementById().
+Bisa digunakan untuk manipulasi konten dan event handling.
+Selanjutnya, kita akan belajar cara menyematkan JavaScript ke dalam HTML. Ayo lanjut! 🚀
+
+
+
+
+Menjalankan JavaScript di Website
+JavaScript dapat disematkan dalam HTML dengan dua cara:
+
+Internal JavaScript
+
+Ditulis langsung dalam tag <script> di HTML.
+Contoh:
+
+<script>
+  const tamu = prompt('Siapakah Anda?');
+  alert('Selamat datang ' + tamu + '!');
+</script>
+External JavaScript
+
+Kode JavaScript dipisahkan dalam file .js.
+Contoh:
+
+<script src="welcome.js"></script>
+Keuntungannya: lebih mudah dikelola, digunakan ulang, dan mempermudah debugging.
+Peletakan <script> dalam HTML
+Di dalam <head> → Jika diperlukan sebelum halaman dimuat.
+Di akhir <body> → Agar HTML dirender lebih dulu, meningkatkan performa.
+Untuk hasil terbaik, sesuaikan posisi <script> dengan kebutuhan website Anda! 🚀
+
+
+
+
+Browser Environment
+JavaScript awalnya dibuat untuk berjalan di browser, menggunakan browser environment yang menyediakan BOM dan DOM.
+
+Keistimewaan Browser Environment
+Menyediakan objek window untuk mengakses BOM dan DOM.
+Memungkinkan interaksi dengan browser dan dokumen HTML.
+Contoh: alert() hanya berjalan di browser, tetapi tidak di Node.js.
+Jika JavaScript dijalankan di luar browser (seperti Node.js), BOM dan DOM tidak tersedia, sehingga kode seperti window.alert() akan error.
+
+Dalam front-end, kita akan banyak bekerja dengan BOM dan DOM. Siap belajar lebih lanjut? 🚀
+
+
+
+
+Pendahuluan Browser Object Model (BOM)
+Setiap browser menyediakan Browser Object Model (BOM), yang diwakili oleh objek window.
+
+Dengan window, kita bisa mengakses berbagai method dan atribut untuk membuat halaman web lebih interaktif.
+
+Tiga method dasar yang sering digunakan:
+
+alert() – Menampilkan pop-up pesan.
+prompt() – Meminta input dari pengguna.
+console – Menampilkan log di developer tools.
+Selanjutnya, kita akan membahas masing-masing secara lebih mendalam! 🚀
+
+
+
+
+Method alert() dalam BOM
+Method alert() digunakan untuk menampilkan pop-up di browser dengan satu parameter opsional berupa string.
+
+Contoh penggunaan:
+
+alert('Halo, user!');
+Atau menggunakan variabel:
+
+
+let message = 'Halo, user!';
+alert(message);
+Catatan penting:
+Pop-up alert bersifat blocking, artinya user tidak bisa berinteraksi dengan halaman web sebelum menutupnya.
+Digunakan untuk memberi informasi penting, tetapi jangan terlalu sering agar tidak mengganggu pengalaman pengguna. 🚀
+
+
+
+Method prompt() dalam BOM
+Method prompt() digunakan untuk meminta input dari user melalui pop-up browser.
+
+Nilai Kembalian prompt()
+Jika user mengisi input → Mengembalikan string sesuai input
+Jika user menekan "OK" tanpa mengisi → Mengembalikan string kosong ("")
+Jika user menekan "Cancel" → Mengembalikan null
+Contoh Penggunaan
+
+let pesan = prompt('Masukkan pesan:');
+console.log(pesan); // Output: Input user atau null jika "Cancel"
+Semua Input Berupa String!
+Walaupun user memasukkan angka, hasilnya tetap string:
+
+
+let angka = prompt('Masukkan angka:');
+console.log(typeof angka); // Output: 'string'
+Jika ingin mengubah ke number, gunakan:
+
+
+let angka = Number(prompt('Masukkan angka:'));
+console.log(typeof angka); // Output: 'number'
+Memberikan Nilai Default
+Prompt bisa memiliki nilai awal (default value):
+
+
+let name = prompt('Masukkan nama Anda:', 'John Doe');
+Jika tidak diubah, nilai awal akan tetap digunakan.
+
+⚠ Catatan:
+Seperti alert(), prompt() juga bersifat blocking, artinya user tidak bisa berinteraksi dengan halaman sebelum pop-up ditutup.
+
+
+
+
+Objek console dalam BOM
+Objek console adalah alat penting bagi Front-End Web Developer untuk debugging dan menampilkan pesan di console browser.
+
+Method yang Sering Digunakan
+Method	Fungsi
+console.log()	Menampilkan pesan umum ke console.
+console.info()	Menampilkan pesan informasi penting.
+console.warn()	Menampilkan pesan peringatan.
+console.error()	Menampilkan pesan error.
+Contoh Penggunaan
+
+console.log('Pesan umum');
+console.info('Informasi penting');
+console.warn('Peringatan!');
+console.error('Terjadi error!');
+Dengan console, kita dapat memantau jalannya kode dan menemukan bug dengan lebih mudah. 🚀
+
+
+
+Cara Memanggil Anggota BOM
+Dalam JavaScript, properti dan method Browser Object Model (BOM) berada di dalam objek window, yang bersifat global. Oleh karena itu, kita bisa memanggilnya dengan atau tanpa menyebutkan window.
+
+Dua Cara Memanggil alert()
+
+// Cara pertama (eksplisit)
+window.alert('Hello World');
+
+// Cara kedua (implisit)
+alert('Hello World');
+Kedua cara di atas valid, tetapi perlu hati-hati jika ada function dengan nama yang sama.
+
+Potensi Konflik
+
+function alert(nama) {
+  console.log('Hati-hati, ' + nama);
+}
+
+alert('Chewbacca'); // Output: Hati-hati, Chewbacca
+window.alert('Chewbacca'); // Menampilkan pop-up alert
+Jika kita membuat function alert, pemanggilan tanpa window. akan mengarah ke function yang kita buat, bukan ke method bawaan browser. Oleh karena itu, gunakan window.alert() untuk menghindari konflik. 🚀
+
+
+
+Pendahuluan Document Object Model (DOM)
+Sebelumnya, kita telah mempelajari bagaimana JavaScript berinteraksi dengan Browser Object Model (BOM) melalui objek window. Lalu, bagaimana cara JavaScript memanipulasi elemen HTML? Jawabannya adalah melalui Document Object Model (DOM).
+
+DOM memungkinkan JavaScript untuk mengakses dan mengubah konten HTML melalui API yang menghubungkan JavaScript dengan dokumen HTML. Dalam browser, DOM diwakili oleh objek document, yang menyediakan berbagai method untuk mengelola elemen dalam halaman web.
+
+Sebelum mulai memanipulasi elemen HTML, mari kita pahami terlebih dahulu struktur dasar dari DOM! 🚀
+
+
+
+DOM Tree
+Tree dalam DOM merujuk pada struktur data berbentuk pohon, di mana elemen <html> menjadi batang utama, dan elemen-elemen di dalamnya adalah cabangnya.
+
+Contoh HTML:
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Tree</title>
+</head>
+<body>
+  <h1>Hello Developer Front-End Web!</h1>
+  <p>Belajar Membuat Front-End Web untuk Pemula</p>
+</body>
+</html>
+Struktur ini direpresentasikan dalam bentuk DOM Tree, yang nantinya bisa diakses melalui objek document.
+
+Jika HTML memiliki kesalahan struktur, browser secara otomatis akan memperbaikinya. Misalnya:
+
+
+<!DOCTYPE html>
+<html>
+  Hello World!
+</html>
+Akan dikoreksi menjadi:
+
+
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+  Hello World!
+</body>
+</html>
+Struktur DOM Tree inilah yang memungkinkan JavaScript memanipulasi halaman web secara dinamis! 🚀
+
+
+
+
+Mencari dan Mendapatkan Elemen DOM
+Untuk mengakses elemen HTML melalui JavaScript, kita gunakan objek document. Objek ini merepresentasikan seluruh halaman HTML dan memiliki berbagai properti serta method untuk mengakses elemen secara spesifik.
+
+Mengakses Elemen Dasar
+Kita bisa mendapatkan elemen head dan body dengan cara berikut:
+
+
+const head = document.head;
+const body = document.body;
+Keduanya akan mengembalikan elemen dalam bentuk objek.
+
+Mengakses Elemen Spesifik
+Untuk mendapatkan elemen berdasarkan id, gunakan:
+
+
+const gambar = document.getElementById('gambarUtama');
+Berikut beberapa metode lain yang sering digunakan:
+
+Method	Contoh	Fungsi
+getElementById()	document.getElementById('display')	Mengembalikan satu elemen berdasarkan id.
+getElementsByName()	document.getElementsByName('button')	Mengembalikan koleksi elemen berdasarkan atribut name.
+getElementsByClassName()	document.getElementsByClassName('button')	Mengembalikan koleksi elemen berdasarkan class.
+getElementsByTagName()	document.getElementsByTagName('div')	Mengembalikan koleksi elemen berdasarkan tag.
+querySelector()	document.querySelector('.button')	Mengembalikan elemen pertama yang sesuai dengan selector CSS.
+querySelectorAll()	document.querySelectorAll('.button')	Mengembalikan semua elemen yang sesuai dalam bentuk NodeList.
+Perbedaan querySelector() dan querySelectorAll()
+
+const firstButton = document.querySelector('.button'); // Hanya elemen pertama
+const allButtons = document.querySelectorAll('.button'); // Semua elemen dengan class "button"
+console.log(allButtons.length); // Menampilkan jumlah elemen
+Karena NodeList mirip dengan array, kita bisa mengakses elemen berdasarkan indeks dan melakukan looping:
+
+
+for (let item of allButtons) {
+  console.log(item);
+}
+Tips:
+
+Gunakan . untuk memilih berdasarkan class (.button).
+Gunakan # untuk memilih berdasarkan id (#myId).
+Eksperimenlah dengan metode-metode ini untuk memahami bagaimana mendapatkan elemen dengan lebih efektif! 🚀
+
+
+
+
+Membuat Elemen HTML dengan JavaScript
+Manipulasi DOM memungkinkan kita membuat elemen HTML secara dinamis menggunakan JavaScript. Salah satu metode utama yang digunakan adalah createElement().
+
+Membuat Elemen Baru
+Gunakan createElement() untuk membuat elemen HTML baru:
+
+
+const newElement = document.createElement('p');
+Namun, elemen ini masih kosong. Kita bisa menambahkan teks menggunakan properti innerText:
+
+
+newElement.innerText = 'Selamat datang ke HTML kosong ini :)';
+Jika ingin menambahkan tag HTML di dalamnya, gunakan innerHTML:
+
+
+newElement.innerHTML = '<b>Selamat datang</b> ke HTML kosong ini :)';
+Membuat Elemen Gambar
+Kita juga bisa membuat elemen gambar (<img>) dengan cara berikut:
+
+
+const newImg = document.createElement('img');
+newImg.setAttribute('src', 'https://picsum.photos/200/300');
+Metode setAttribute() digunakan untuk menambahkan atribut seperti src, alt, atau class.
+
+Menambahkan Elemen ke Halaman
+Elemen yang dibuat belum muncul karena belum ditambahkan ke dalam HTML. Kita akan mempelajarinya lebih lanjut pada materi berikutnya: "Menambahkan Elemen HTML ke DOM". 🚀
+
+
+
+
+Memanipulasi Atribut dengan setAttribute()
+Kita bisa mengubah atribut elemen HTML melalui JavaScript menggunakan metode setAttribute(), yang digunakan dengan format:
+
+
+element.setAttribute('nama_atribut', 'nilai_atribut');
+1. Mengubah Ukuran Gambar
+Kita perbesar gambar dengan mengubah atribut width dan height:
+
+
+const gambar = document.getElementById('gambar');
+gambar.setAttribute('width', 300);
+gambar.setAttribute('height', 215);
+2. Menonaktifkan Tombol "Play (Coming Soon)"
+Karena tombol ini tidak memiliki id, kita gunakan querySelectorAll() untuk mengambil semua tombol, lalu akses tombol ke-4 dengan indeks 3 dan ubah tipe tombolnya:
+
+
+const buttons = document.querySelectorAll('.button');
+const playButton = buttons[3].children[0]; 
+playButton.setAttribute('type', 'submit');
+JavaScript Automatic Type Conversion
+JavaScript otomatis mengonversi tipe data saat diperlukan. Contoh berikut memiliki hasil yang sama:
+
+
+gambar.setAttribute('width', '300'); // String
+gambar.setAttribute('width', 300);   // Number
+Dengan cara ini, kita bisa dengan mudah memanipulasi elemen HTML sesuai kebutuhan! 🚀
+
+
+
+Manipulasi Konten dengan innerText, innerHTML, dan style.property di JavaScript
+JavaScript memungkinkan kita untuk mengubah isi elemen HTML menggunakan innerText, innerHTML, dan juga mengatur tampilan elemen melalui style.property. Berikut adalah perbedaannya:
+
+innerText → Mengambil atau mengubah teks dalam elemen tanpa menyertakan tag HTML.
+innerHTML → Mengambil atau mengubah teks dalam elemen beserta tag HTML di dalamnya.
+style.property → Mengubah tampilan elemen dengan mengakses properti CSS.
+Perbedaan innerText vs. innerHTML
+Misalkan kita punya elemen berikut:
+
+
+<div id="links">
+  <ul>
+    <li><a href="http://www.dicoding.com" id="dicodingLink">Dicoding</a></li>
+    <li><a href="http://www.google.com" id="googleLink">Google</a></li>
+  </ul>
+</div>
+Menggunakan innerText:
+
+
+const dicoding = document.getElementById('dicodingLink');
+dicoding.innerText = 'Belajar Programming di Dicoding';
+Menggunakan innerHTML:
+
+
+dicoding.innerHTML = '<i>Belajar Programming di Dicoding</i>';
+Hasil:
+
+innerText hanya mengubah teks biasa.
+innerHTML dapat menyisipkan tag <i>, sehingga teks menjadi miring (italic).
+Manipulasi Style dengan style.property
+Kita dapat mengubah tampilan elemen menggunakan style.property. Misalnya, kita ingin memberikan sudut melengkung (border-radius) pada semua tombol dalam halaman:
+
+
+const buttons = document.getElementsByClassName('button');
+for (const button of buttons) {
+  button.children[0].style.borderRadius = '6px';
+}
+Catatan: Properti CSS seperti border-radius dalam JavaScript menggunakan format camelCase (borderRadius).
+
+Dengan teknik ini, kita bisa memanipulasi konten dan tampilan elemen dengan lebih fleksibel! 🚀
+
+
+
+Menambahkan Elemen HTML ke DOM
+Kita bisa menambahkan elemen baru ke dalam DOM menggunakan dua metode utama: appendChild() dan insertBefore().
+
+1. Menambahkan Elemen dengan appendChild()
+Metode appendChild() digunakan untuk menambahkan elemen sebagai child di bagian akhir dari elemen induknya.
+
+Contoh: Menambahkan langkah "Selamat menikmati!" ke dalam daftar.
+
+
+const newElement = document.createElement('li');  
+newElement.innerText = 'Selamat menikmati!';  
+const daftar = document.getElementById('daftar');  
+daftar.appendChild(newElement);
+Hasilnya, item "Selamat menikmati!" akan muncul di akhir daftar.
+
+2. Menyisipkan Elemen dengan insertBefore()
+Metode insertBefore() digunakan untuk menyisipkan elemen sebelum elemen tertentu dalam parent-nya.
+
+Contoh: Menambahkan langkah "Hidupkan kompor." sebelum langkah pertama.
+
+
+const elementAwal = document.createElement('li');  
+elementAwal.innerText = 'Hidupkan kompor.';  
+const itemAwal = document.getElementById('awal');  
+daftar.insertBefore(elementAwal, itemAwal);
+Hasilnya, langkah "Hidupkan kompor." akan muncul sebelum langkah pertama.
+
+Dengan metode ini, kita bisa menambah dan menyusun elemen HTML secara dinamis. Selanjutnya, kita akan mempelajari event untuk membuat halaman lebih interaktif! 🚀
+
+
+
+
+Pendahuluan: Interaktif dengan Event
+JavaScript memungkinkan kita memanipulasi elemen HTML dan membuatnya lebih interaktif melalui event. Misalnya, menjalankan aksi saat tombol ditekan.
+
+Dalam modul ini, kita akan mempelajari:
+✅ Jenis-jenis Event
+✅ Menambahkan Event Handler pada elemen HTML
+✅ Custom Event dan cara menggunakannya
+✅ Konsep Event Bubbling & Capturing
+✅ Event pada <form> dan <input>
+
+Siap meningkatkan interaktivitas front-end Anda? Ayo mulai belajar! 🚀
+
+
+
+
+Apa Itu Event?
+Event adalah kejadian yang terjadi saat user berinteraksi dengan elemen HTML, seperti mengklik tombol atau menekan keyboard. Dengan JavaScript, kita bisa menangkap event dan menjalankan aksi tertentu, misalnya menampilkan pesan saat tombol ditekan.
+
+Dalam materi ini, kita akan mempelajari:
+✅ Jenis-jenis Event
+✅ Menjalankan kode berdasarkan event
+✅ Menambahkan event pada elemen HTML
+✅ Membuat elemen bereaksi terhadap event
+✅ Custom Event sesuai kebutuhan
+
+Dengan memahami event, Anda bisa membuat halaman web lebih interaktif dan dinamis! 🚀
+
+
+
+
+Macam-Macam Event
+Event dalam JavaScript dikelompokkan berdasarkan sumbernya, seperti window, form, keyboard, clipboard, dan mouse.
+
+1. Window Events (Berasal dari browser)
+onload → Terjadi setelah halaman selesai dimuat.
+onpageshow → Terjadi saat halaman dikunjungi kembali (berbeda dari onload).
+onresize → Terjadi saat ukuran window diubah.
+2. Form Events (Berasal dari elemen <form>)
+onreset → Terjadi saat tombol reset ditekan.
+onsubmit → Terjadi saat tombol submit ditekan.
+3. Keyboard Events (Berasal dari keyboard)
+onkeydown → Terjadi saat tombol ditekan.
+onkeypress → Terjadi setelah onkeydown (tidak mendeteksi tombol fungsi).
+onkeyup → Terjadi saat tombol dilepas.
+4. Clipboard Events (Berasal dari proses copy, cut, paste)
+oncopy → Terjadi saat elemen disalin.
+oncut → Terjadi saat elemen dipotong.
+onpaste → Terjadi saat elemen ditempel.
+5. Mouse Events (Berasal dari interaksi mouse)
+onclick → Terjadi saat elemen diklik.
+ondblclick → Terjadi saat elemen diklik dua kali.
+onmouseover → Terjadi saat kursor berada di atas elemen.
+Melalui praktik, Anda akan lebih memahami event-event ini secara bertahap tanpa perlu menghafalnya sekaligus. 🚀
+
+
+1. Window Events
+onload → Menjalankan kode setelah halaman selesai dimuat.
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>Window Events</title>
+    <script>
+        window.onload = function() {
+            alert("Halaman sudah dimuat!");
+        };
+    </script>
+</head>
+<body>
+    <h1>Window Events</h1>
+</body>
+</html>
+onpageshow → Menampilkan pesan ketika halaman dikunjungi kembali.
+
+window.onpageshow = function() {
+    console.log("Halaman ditampilkan kembali.");
+};
+onresize → Menampilkan ukuran saat window diubah.
+
+window.onresize = function() {
+    console.log("Ukuran window: " + window.innerWidth + " x " + window.innerHeight);
+};
+2. Form Events
+onreset → Menghapus nilai input saat reset ditekan.
+
+<form onreset="alert('Form direset!')">
+    <input type="text" name="nama" placeholder="Nama">
+    <button type="reset">Reset</button>
+</form>
+onsubmit → Validasi input sebelum dikirim.
+
+<form onsubmit="return validateForm()">
+    <input type="text" id="nama" name="nama" placeholder="Nama">
+    <button type="submit">Kirim</button>
+</form>
+<script>
+    function validateForm() {
+        let nama = document.getElementById("nama").value;
+        if (nama === "") {
+            alert("Nama tidak boleh kosong!");
+            return false;
+        }
+        return true;
+    }
+</script>
+3. Keyboard Events
+onkeydown → Menampilkan tombol yang ditekan.
+
+<input type="text" onkeydown="console.log('Tombol ditekan!')">
+onkeypress → Menampilkan karakter yang sedang ditekan.
+
+<input type="text" onkeypress="console.log('Tombol ditekan: ' + event.key)">
+onkeyup → Menampilkan tombol yang dilepas.
+
+<input type="text" onkeyup="console.log('Tombol dilepas!')">
+4. Clipboard Events
+oncopy → Menampilkan pesan saat teks disalin.
+
+<p oncopy="alert('Teks disalin!')">Salin teks ini.</p>
+oncut → Menampilkan pesan saat teks dipotong.
+
+<input type="text" oncut="alert('Teks dipotong!')" value="Potong teks ini.">
+onpaste → Menampilkan pesan saat teks ditempel.
+
+<input type="text" onpaste="alert('Teks ditempel!')">
+5. Mouse Events
+onclick → Mengubah teks saat tombol diklik.
+
+<button onclick="this.innerText = 'Diklik!'">Klik saya</button>
+ondblclick → Mengubah warna teks saat diklik dua kali.
+
+<p ondblclick="this.style.color = 'red'">Klik dua kali untuk mengubah warna.</p>
+onmouseover → Mengubah warna saat kursor berada di atas elemen.
+
+<p onmouseover="this.style.backgroundColor = 'yellow'">Arahkan kursor ke sini.</p>
+Dengan contoh-contoh ini, Anda bisa mulai bereksperimen sendiri untuk membuat halaman web lebih interaktif! 🚀
+
+
+
+Menambahkan Event Handler - Menyiapkan Halaman Website
+Event dalam JavaScript memungkinkan kita membuat halaman web yang lebih interaktif. Dalam praktik ini, kita akan menggunakan dua event: onclick dan onload.
+
+Sebelum mulai, buat file event.html dan tambahkan kode berikut:
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <title>Event World</title>
+  <style>
+    .contents {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid black;
+      padding: 15px;
+    }
+    #generateButton {
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="contents" align="center" hidden>
+    <button id="incrementButton">Tekan Aku :)</button>
+    <h3>Kamu sudah menekan tombol di atas sebanyak <span id="count">0</span></h3>
+  </div>
+
+  <script>
+    // Kode JavaScript akan ditambahkan di sini
+  </script>
+</body>
+</html>
+Catatan
+Atribut hidden pada <div> membuat elemen tidak terlihat hingga event terjadi.
+Atribut align="center" sudah usang, gunakan CSS untuk pemusatan elemen.
+Setelah event handler ditambahkan, halaman ini akan merespons klik tombol dan menampilkan hitungan interaksi. 🚀
+
+
+Menambahkan Event Handler - Event onload
+Kita akan menampilkan elemen yang tersembunyi setelah halaman sepenuhnya dimuat menggunakan event onload.
+
+Langkah 1: Buat Fungsi Event Handler
+Tambahkan fungsi welcome() dalam tag <script>:
+
+
+function welcome() {
+  alert('Sim salabim! Elemen-elemen HTML muncul!');
+  document.querySelector('.contents').removeAttribute('hidden');
+}
+Langkah 2: Kaitkan dengan Event onload
+Tambahkan event handler pada body:
+
+
+document.body.onload = welcome;
+Hasilnya
+Saat halaman dibuka, alert akan muncul, dan elemen tersembunyi akan ditampilkan. 🎉 Selanjutnya, kita akan menambahkan event onclick pada tombol. 🚀
+
+
+
+Menambahkan Event Handler - Event onclick
+Sekarang kita akan membuat tombol yang menampilkan jumlah klik dan memberikan kejutan saat mencapai 7 klik.
+
+Langkah 1: Buat Fungsi increment()
+Tambahkan fungsi berikut di dalam tag <script>:
+
+
+function increment() {
+  let count = document.getElementById('count');
+  count.innerText++;
+
+  if (count.innerText == 7) {
+    const message = document.createElement('h4');
+    message.innerText = 'Selamat! Anda menemukan hadiah tersembunyi...';
+
+    const image = document.createElement('img');
+    image.src = 'https://raw.githubusercontent.com/dicodingacademy/a315-web-pemula-labs/shared-files/catto.jpg';
+
+    document.querySelector('.contents').appendChild(message).appendChild(image);
+  }
+}
+Langkah 2: Tambahkan Event Handler
+Tambahkan event handler ke tombol:
+
+
+document.getElementById('incrementButton').onclick = increment;
+Kode Lengkap:
+
+function welcome() {
+  alert('Sim salabim! Elemen-elemen HTML muncul!');
+  document.querySelector('.contents').removeAttribute('hidden');
+}
+
+document.body.onload = welcome;
+document.getElementById('incrementButton').onclick = increment;
+Hasilnya
+Saat tombol ditekan, angka akan bertambah, dan pada klik ke-7, kejutan akan muncul! 🎉 Coba tambahkan event lain untuk lebih interaktif. 🚀
+
+
+
+Menambahkan Event Handler - Event Handler Inline
+Kita dapat menulis event handler langsung di dalam tag HTML tanpa menggunakan JavaScript terpisah.
+
+Langkah 1: Ubah Event Handler ke Inline
+Komentari event handler dalam <script>:
+
+javascript
+Copy
+Edit
+// document.getElementById('incrementButton').onclick = increment;
+// document.body.onload = welcome;
+Lalu, tambahkan event handler langsung dalam HTML:
+
+
+<body onload="welcome()">
+  <div class="contents" align="center" hidden>
+    <button id="incrementButton" onclick="increment()">Tekan Aku :)</button>
+    <h3>Kamu sudah menekan tombol sebanyak <span id="count">0</span></h3>
+  </div>
+</body>
+Kode Lengkap:
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event World</title>
+  <style>
+    .contents {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid black;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body onload="welcome()">
+  <div class="contents" align="center" hidden>
+    <button id="incrementButton" onclick="increment()">Tekan Aku :)</button>
+    <h3>Kamu sudah menekan tombol sebanyak <span id="count">0</span></h3>
+  </div>
+
+  <script>
+    function increment() {
+      let count = document.getElementById('count');
+      count.innerText++;
+      
+      if (count.innerText == 7) {
+        const message = document.createElement('h4');
+        message.innerText = 'Selamat! Anda menemukan hadiah tersembunyi...';
+
+        const image = document.createElement('img');
+        image.src = 'https://i.ibb.co/0V49VRZ/catto.jpg';
+
+        document.querySelector('.contents').appendChild(message).appendChild(image);
+      }
+    }
+
+    function welcome() {
+      alert('Sim salabim! Elemen-elemen HTML muncul!');
+      document.querySelector('.contents').removeAttribute('hidden');
+    }
+  </script>
+</body>
+</html>
+Hasilnya
+Halaman akan menampilkan elemen saat dimuat (onload di <body>).
+Tombol akan meningkatkan angka dan menampilkan kejutan di klik ke-7.
+Selanjutnya, kita bisa menggunakan addEventListener() untuk event handling yang lebih fleksibel! 🚀
+
+
+
+Menambahkan Event Handler dengan addEventListener()
+Sekarang kita akan menggunakan addEventListener() untuk menambahkan event handler pada elemen HTML.
+
+Perubahan pada Kode HTML
+Kita hapus event handler inline dan gunakan JavaScript murni:
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event World</title>
+  <style>
+    .contents {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid black;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="contents" align="center" hidden>
+    <button id="incrementButton">Tekan Aku :)</button>
+    <h3>Kamu sudah menekan tombol sebanyak <span id="count">0</span></h3>
+  </div>
+
+  <script>
+    function increment() {
+      let count = document.getElementById('count');
+      count.innerText++;
+
+      if (count.innerText == 7) {
+        const message = document.createElement('h4');
+        message.innerText = 'Selamat! Anda menemukan hadiah tersembunyi...';
+
+        const image = document.createElement('img');
+        image.src = 'https://i.ibb.co/0V49VRZ/catto.jpg';
+
+        document.querySelector('.contents').appendChild(message).appendChild(image);
+      }
+    }
+
+    function welcome() {
+      alert('Sim salabim! Elemen-elemen HTML muncul!');
+      document.querySelector('.contents').removeAttribute('hidden');
+    }
+
+    window.addEventListener('load', welcome);
+    document.getElementById('incrementButton').addEventListener('click', increment);
+  </script>
+</body>
+</html>
+Keunggulan addEventListener()
+Bisa menambahkan beberapa event handler:
+
+js
+Copy
+Edit
+element.addEventListener('click', fungsiA);
+element.addEventListener('click', fungsiB);
+Berbeda dengan onclick, di mana event sebelumnya akan tertimpa.
+
+Mendukung event bubbling dan capturing, yang berguna dalam event delegation.
+
+Dengan ini, kode menjadi lebih fleksibel dan dapat dikembangkan lebih lanjut! 🚀
+
+
+
+Selain event click, ada banyak jenis event lain yang bisa digunakan dalam JavaScript. Berikut beberapa kategori dan contoh event yang sering digunakan:
+
+1. Mouse Events 🖱️
+Event yang terkait dengan interaksi pengguna menggunakan mouse.
+
+Event	Deskripsi
+click	Saat elemen diklik
+dblclick	Saat elemen diklik dua kali
+mousedown	Saat tombol mouse ditekan
+mouseup	Saat tombol mouse dilepas
+mousemove	Saat mouse bergerak di atas elemen
+mouseenter	Saat mouse masuk ke dalam elemen (tanpa memeriksa child element)
+mouseleave	Saat mouse keluar dari elemen
+mouseover	Saat mouse masuk ke dalam elemen (termasuk child element)
+mouseout	Saat mouse keluar dari elemen (termasuk child element)
+2. Keyboard Events ⌨️
+Event yang terjadi saat pengguna berinteraksi dengan keyboard.
+
+Event	Deskripsi
+keydown	Saat tombol ditekan (termasuk tombol Ctrl, Shift, Alt)
+keyup	Saat tombol dilepas
+keypress	Saat tombol ditekan (deprecated, gunakan keydown)
+3. Form Events 📝
+Event yang terjadi pada elemen formulir seperti <input>, <textarea>, dan <select>.
+
+Event	Deskripsi
+focus	Saat elemen mendapat fokus
+blur	Saat elemen kehilangan fokus
+change	Saat nilai dalam elemen berubah (misalnya dropdown atau input teks)
+input	Saat pengguna mengetik di dalam input field
+submit	Saat form dikirimkan
+reset	Saat form direset
+4. Window Events 🌍
+Event yang terjadi pada objek window atau dokumen.
+
+Event	Deskripsi
+load	Saat halaman selesai dimuat
+resize	Saat ukuran jendela diubah
+scroll	Saat halaman digulir (scroll)
+unload	Saat halaman ditutup atau dinavigasi ke halaman lain
+5. Drag & Drop Events 🏗️
+Event yang terjadi saat elemen diseret dan dilepaskan.
+
+Event	Deskripsi
+dragstart	Saat elemen mulai diseret
+drag	Saat elemen sedang diseret
+dragenter	Saat elemen yang diseret memasuki area target
+dragover	Saat elemen yang diseret berada di atas area target
+dragleave	Saat elemen yang diseret keluar dari area target
+drop	Saat elemen dilepas di area target
+dragend	Saat elemen selesai diseret
+6. Clipboard Events 📋
+Event yang terkait dengan operasi copy-paste.
+
+Event	Deskripsi
+copy	Saat pengguna menyalin teks
+cut	Saat pengguna memotong teks
+paste	Saat pengguna menempelkan teks
+7. Media Events 🎵📹
+Event yang terjadi pada elemen media seperti <audio> dan <video>.
+
+Event	Deskripsi
+play	Saat pemutaran media dimulai
+pause	Saat pemutaran media dijeda
+ended	Saat pemutaran media selesai
+volumechange	Saat volume media berubah
+timeupdate	Saat posisi waktu pemutaran berubah
+8. Touch Events 📱
+Event yang terjadi pada perangkat layar sentuh (touchscreen).
+
+Event	Deskripsi
+touchstart	Saat layar disentuh
+touchmove	Saat jari bergerak di atas layar
+touchend	Saat jari diangkat dari layar
+Ini hanya sebagian kecil dari event yang ada. Untuk daftar lengkapnya, kamu bisa cek di MDN Web Events. 🚀
+
+
+
+Mengapa Kita Perlu Custom Event?
+Custom event memungkinkan kita untuk menjalankan sebuah event handler setelah event handler lain selesai dipanggil.
+Ini berguna dalam berbagai kasus, misalnya:
+
+Menghubungkan beberapa event secara berurutan.
+Mengelola komunikasi antar komponen dalam aplikasi JavaScript.
+Menghindari penggunaan callback yang terlalu dalam (callback hell).
+Membuat dan Menggunakan Custom Event
+Mari kita buat contoh dengan tampilan sederhana.
+
+1. Struktur HTML
+Buat file HTML baru bernama custom-event.html dan masukkan kode berikut:
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Event di JavaScript</title>
+    <style>
+        .buttons {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid black;
+            padding: 15px;
+            text-align: center;
+        }
+        .button {
+            margin: 8px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="buttons">
+        <h3 id="caption">Silakan tekan tombol di bawah...</h3>
+        <button class="button" id="tombol">Tombol Custom Event</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+2. JavaScript untuk Custom Event
+Buat file script.js di folder yang sama dan tambahkan kode berikut:
+
+javascript
+Copy
+Edit
+// 1. Buat konstanta untuk custom event
+const CUSTOM_EVENTS = {
+    CHANGE_CAPTION: 'changeCaption'
+};
+
+// 2. Buat custom event dengan nama yang telah kita tentukan
+const changeCaptionEvent = new Event(CUSTOM_EVENTS.CHANGE_CAPTION);
+
+// 3. Tunggu hingga halaman sepenuhnya dimuat
+window.addEventListener('load', function() {
+    const tombol = document.getElementById('tombol');
+
+    // 4. Tambahkan event listener untuk menangkap custom event
+    tombol.addEventListener(CUSTOM_EVENTS.CHANGE_CAPTION, customEventHandler);
+
+    // 5. Tambahkan event listener pada tombol untuk memicu custom event
+    tombol.addEventListener('click', function() {
+        tombol.dispatchEvent(changeCaptionEvent);
+    });
+});
+
+// 6. Buat fungsi untuk menangani custom event
+function customEventHandler(ev) {
+    console.log('Event ' + ev.type + ' telah dijalankan');
+    const caption = document.getElementById('caption');
+    caption.innerText = 'Anda telah membangkitkan custom event!';
+}
+Penjelasan Kode
+Mendefinisikan nama custom event dalam objek konstanta
+→ Ini adalah best practice untuk menghindari event yang ter-overwrite di program yang lebih kompleks.
+
+Membuat Custom Event dengan new Event()
+→ changeCaptionEvent dibuat dengan nama changeCaption berdasarkan konstanta yang telah kita buat.
+
+Menunggu halaman selesai dimuat (load event)
+→ Agar semua elemen siap sebelum JavaScript dijalankan.
+
+Menambahkan event listener untuk custom event pada tombol
+→ Saat event changeCaption terjadi, fungsi customEventHandler akan dipanggil.
+
+Menambahkan event listener click pada tombol
+→ Saat tombol diklik, kita menggunakan dispatchEvent() untuk menjalankan custom event changeCaption.
+
+Menangani custom event (customEventHandler)
+→ Mengubah teks pada elemen <h3> dan menampilkan log di konsol.
+
+Best Practice dalam Menggunakan Custom Event
+✅ Gunakan konstanta untuk menyimpan nama custom event
+⛔ Jangan membuat event secara sembarangan tanpa dokumentasi
+✅ Gunakan dispatchEvent() untuk memicu custom event
+✅ Gunakan event listener dengan baik agar program lebih terstruktur
+
+Kesimpulan
+Custom event di JavaScript dapat dibuat menggunakan new Event('namaEvent').
+Custom event bisa membantu dalam menghubungkan beberapa event secara berurutan dan menghindari callback hell.
+Menggunakan konstanta untuk menyimpan nama event adalah best practice agar lebih terorganisir.
+Dengan memahami konsep Custom Event, kita bisa membuat program yang lebih fleksibel dan terstruktur. 🚀
+
+
+
+
+Membangkitkan Custom Event
+Pada bagian ini, kita akan membangkitkan custom event yang telah dibuat pada materi sebelumnya. Kita hanya perlu menambahkan satu fungsi yang bertugas untuk melakukan dispatch atau pemanggilan custom event handler.
+
+Langkah 1: Pastikan Berkas HTML Sesuai
+Pastikan Anda sudah memiliki berkas custom-event.html yang telah dibuat sebelumnya dan memiliki struktur kode sebagai berikut:
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <title>Event World</title>
+  <style>
+    .buttons {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 2px solid black;
+      padding: 15px;
+    }
+
+    .button {
+      margin: 8px;
+      height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="buttons" align="center">
+    <h3 id="caption">Silakan tekan tombol di bawah...</h3>
+    <button class="button" id="tombol">Tombol Custom Event</button>
+  </div>
+
+  <script>
+    // Membuat custom event
+    const changeCaption = new Event('changeCaption');
+
+    // Menjalankan kode setelah halaman dimuat
+    window.addEventListener('load', function () {
+      const tombol = document.getElementById('tombol');
+
+      // Menambahkan event listener untuk custom event
+      tombol.addEventListener('changeCaption', customEventHandler);
+
+      // Menambahkan event listener untuk tombol
+      tombol.addEventListener('click', function () {
+        tombol.dispatchEvent(changeCaption);
+      });
+    });
+
+    // Event handler untuk custom event
+    function customEventHandler(ev) {
+      console.log(`Event ${ev.type} telah dijalankan`);
+      const caption = document.getElementById('caption');
+      caption.innerText = 'Anda telah membangkitkan custom event!';
+    }
+  </script>
+</body>
+</html>
+Langkah 2: Memahami Dispatch Custom Event
+Pada kode di atas, kita memanggil custom event menggunakan metode dispatchEvent().
+
+js
+Copy
+Edit
+tombol.addEventListener('click', function () {
+  tombol.dispatchEvent(changeCaption);
+});
+Ketika tombol ditekan, event "click" akan memicu pemanggilan custom event yang telah kita buat, yaitu "changeCaption".
+
+Sehingga, customEventHandler akan dieksekusi dan mengubah teks dalam elemen <h3> menjadi:
+
+"Anda telah membangkitkan custom event!"
+
+Selain itu, pada console browser, kita juga akan melihat log berikut:
+
+vbnet
+Copy
+Edit
+Event changeCaption telah dijalankan
+Kesimpulan
+Custom event memungkinkan kita untuk membuat event dengan nama yang kita tentukan sendiri.
+Event ini bisa dipanggil melalui dispatchEvent(), mirip dengan event bawaan seperti "click" atau "load".
+Dengan custom event, kita dapat mengontrol kapan suatu event handler harus dijalankan berdasarkan kebutuhan aplikasi kita.
+Selanjutnya, kita akan mempelajari event bubbling dan capturing, yang berperan penting dalam event handling pada elemen bersarang! 🚀
+
+
+
+
+Event Bubbling dan Capturing dalam JavaScript
+Event Bubbling
+Event bubbling terjadi ketika sebuah event dipicu pada elemen, lalu event tersebut bergerak ke atas menuju elemen parent hingga mencapai root (<html>).
+
+Contoh:
+Jika kita memiliki beberapa elemen <div> bersarang, lalu mengklik elemen terdalam, event akan berjalan dari elemen yang diklik ke elemen parent-parentnya.
+
+
+<div id="luar">
+  LUAR
+  <div id="tengah">
+    TENGAH
+    <div id="dalam">DALAM</div>
+  </div>
+</div>
+
+<script>
+  const divs = document.querySelectorAll('div');
+  divs.forEach(div => {
+    div.addEventListener('click', function () {
+      alert(`ELEMEN ${this.id.toUpperCase()}`);
+    });
+  });
+</script>
+Hasilnya: Klik elemen DALAM, lalu alert akan muncul dari DALAM → TENGAH → LUAR.
+
+Event Capturing
+Event capturing adalah kebalikan dari bubbling. Event dimulai dari elemen paling luar, lalu turun ke elemen yang diklik.
+
+Untuk mengaktifkan capturing, tambahkan true sebagai parameter ketiga di addEventListener().
+
+js
+Copy
+Edit
+divs.forEach(div => {
+  div.addEventListener('click', function () {
+    alert(`ELEMEN ${this.id.toUpperCase()}`);
+  }, true); // Capturing mode
+});
+Hasilnya: Klik elemen DALAM, alert akan muncul dari LUAR → TENGAH → DALAM.
+
+Kesimpulan
+Bubbling: Event berjalan dari elemen yang diklik ke atas (child → parent).
+Capturing: Event berjalan dari elemen terluar ke dalam (parent → child).
+Gunakan parameter true dalam addEventListener() untuk menangani event capturing.
+Event propagation ini penting untuk memahami bagaimana event bekerja dalam elemen bersarang! 🚀
+
+
+
+Pengenalan ke Form dalam HTML
+Form digunakan untuk menangkap banyak input dari user sekaligus, mirip dengan formulir di dunia nyata.
+
+Contoh Form Sederhana:
+html
+Copy
+Edit
+<form>
+  <label for="nama">Nama:</label>
+  <input type="text" id="nama" name="nama">
+  
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email">
+
+  <button type="submit">Submit Data</button>
+</form>
+Event Penting dalam Form:
+Event	Keterangan
+onsubmit	Saat tombol submit ditekan
+oninput	Saat pengguna mengetik di field
+onchange	Saat pengguna selesai mengisi field atau memilih opsi dropdown
+oncopy	Saat teks disalin
+onpaste	Saat teks ditempel
+onfocus	Saat field dipilih untuk input
+onblur	Saat field kehilangan fokus
+Form sangat berguna untuk mengumpulkan data dari user dan akan kita bahas lebih lanjut dalam Input Event! 🚀
+
+
+
+Input Event: onInput, onFocus, dan onBlur
+1. Event onInput
+Event onInput terjadi setiap kali pengguna mengetik atau menghapus karakter dalam field input. Kita bisa menggunakannya untuk menampilkan sisa karakter yang dapat diketik.
+
+Contoh Implementasi:
+js
+Copy
+Edit
+document.addEventListener('DOMContentLoaded', function () {
+  const inputNama = document.getElementById('inputNama');
+  const sisaKarakter = document.getElementById('sisaKarakter');
+  const notifikasi = document.getElementById('notifikasiSisaKarakter');
+
+  sisaKarakter.innerText = inputNama.maxLength;
+
+  inputNama.addEventListener('input', function () {
+    const sisa = inputNama.maxLength - inputNama.value.length;
+    sisaKarakter.innerText = sisa > 0 ? sisa : 'Batas maksimal tercapai!';
+    notifikasi.style.color = sisa <= 5 ? 'red' : 'black';
+  });
+});
+2. Event onFocus
+Event onFocus dijalankan saat pengguna mulai mengetik di field input. Kita bisa menggunakannya untuk menampilkan notifikasi jumlah karakter yang tersisa.
+
+Contoh Implementasi:
+js
+Copy
+Edit
+inputNama.addEventListener('focus', function () {
+  notifikasi.style.visibility = 'visible';
+});
+3. Event onBlur
+Event onBlur terjadi ketika pengguna berpindah dari field input. Kita bisa menggunakannya untuk menyembunyikan notifikasi.
+
+Contoh Implementasi:
+js
+Copy
+Edit
+inputNama.addEventListener('blur', function () {
+  notifikasi.style.visibility = 'hidden';
+});
+Dengan tiga event ini, kita bisa membuat form lebih interaktif! 🚀 Selanjutnya, kita akan menambahkan fitur lain pada form, seperti captcha.
+
+
+
+Event pada Elemen Input: onChange, onCopy, dan onPaste
+
+onChange
+
+Terjadi saat nilai input berubah dan kehilangan fokus (blur).
+Contoh: Mengaktifkan tombol "Submit Data" jika captcha benar.
+Validasi tambahan saat submit untuk memastikan captcha benar.
+onCopy
+
+Terjadi saat user menyalin teks dari input.
+Contoh: Menampilkan alert "Anda telah men-copy sesuatu...".
+onPaste
+
+Terjadi saat user menempelkan teks ke input.
+Contoh: Menampilkan alert "Anda telah mem-paste sebuah teks...".
+Event ini membantu meningkatkan validasi input dan pengalaman pengguna dalam formulir web. 🚀
