@@ -656,9 +656,7 @@ Kita dapat menulis event handler langsung di dalam tag HTML tanpa menggunakan Ja
 Langkah 1: Ubah Event Handler ke Inline
 Komentari event handler dalam <script>:
 
-javascript
-Copy
-Edit
+
 // document.getElementById('incrementButton').onclick = increment;
 // document.body.onload = welcome;
 Lalu, tambahkan event handler langsung dalam HTML:
@@ -780,9 +778,7 @@ Kita hapus event handler inline dan gunakan JavaScript murni:
 Keunggulan addEventListener()
 Bisa menambahkan beberapa event handler:
 
-js
-Copy
-Edit
+
 element.addEventListener('click', fungsiA);
 element.addEventListener('click', fungsiB);
 Berbeda dengan onclick, di mana event sebelumnya akan tertimpa.
@@ -918,9 +914,7 @@ Buat file HTML baru bernama custom-event.html dan masukkan kode berikut:
 2. JavaScript untuk Custom Event
 Buat file script.js di folder yang sama dan tambahkan kode berikut:
 
-javascript
-Copy
-Edit
+
 // 1. Buat konstanta untuk custom event
 const CUSTOM_EVENTS = {
     CHANGE_CAPTION: 'changeCaption'
@@ -1044,9 +1038,7 @@ Pastikan Anda sudah memiliki berkas custom-event.html yang telah dibuat sebelumn
 Langkah 2: Memahami Dispatch Custom Event
 Pada kode di atas, kita memanggil custom event menggunakan metode dispatchEvent().
 
-js
-Copy
-Edit
+
 tombol.addEventListener('click', function () {
   tombol.dispatchEvent(changeCaption);
 });
@@ -1102,9 +1094,7 @@ Event capturing adalah kebalikan dari bubbling. Event dimulai dari elemen paling
 
 Untuk mengaktifkan capturing, tambahkan true sebagai parameter ketiga di addEventListener().
 
-js
-Copy
-Edit
+
 divs.forEach(div => {
   div.addEventListener('click', function () {
     alert(`ELEMEN ${this.id.toUpperCase()}`);
@@ -1154,9 +1144,7 @@ Input Event: onInput, onFocus, dan onBlur
 Event onInput terjadi setiap kali pengguna mengetik atau menghapus karakter dalam field input. Kita bisa menggunakannya untuk menampilkan sisa karakter yang dapat diketik.
 
 Contoh Implementasi:
-js
-Copy
-Edit
+
 document.addEventListener('DOMContentLoaded', function () {
   const inputNama = document.getElementById('inputNama');
   const sisaKarakter = document.getElementById('sisaKarakter');
@@ -1174,9 +1162,7 @@ document.addEventListener('DOMContentLoaded', function () {
 Event onFocus dijalankan saat pengguna mulai mengetik di field input. Kita bisa menggunakannya untuk menampilkan notifikasi jumlah karakter yang tersisa.
 
 Contoh Implementasi:
-js
-Copy
-Edit
+
 inputNama.addEventListener('focus', function () {
   notifikasi.style.visibility = 'visible';
 });
@@ -1184,9 +1170,7 @@ inputNama.addEventListener('focus', function () {
 Event onBlur terjadi ketika pengguna berpindah dari field input. Kita bisa menggunakannya untuk menyembunyikan notifikasi.
 
 Contoh Implementasi:
-js
-Copy
-Edit
+
 inputNama.addEventListener('blur', function () {
   notifikasi.style.visibility = 'hidden';
 });
@@ -1218,9 +1202,7 @@ Tanda + di depan new Date() adalah cara cepat untuk mengonversi objek Date menja
 Penjelasan Lebih Rinci
 Di JavaScript, new Date() menghasilkan objek:
 
-js
-Copy
-Edit
+
 console.log(new Date()); 
 // Output: Fri Feb 23 2025 12:34:56 GMT+0700 (Western Indonesia Time)
 Namun, jika kita ingin mendapatkan timestamp (jumlah milidetik sejak 1 Januari 1970), kita perlu mengonversi objek ini menjadi angka.
@@ -1229,23 +1211,17 @@ Ada beberapa cara untuk melakukan ini:
 
 1️⃣ Menggunakan .getTime()
 
-js
-Copy
-Edit
+
 console.log(new Date().getTime());
 // Output: 1741234567890 (angka berubah setiap milidetik)
 2️⃣ Menggunakan Date.now() (cara modern & lebih cepat)
 
-js
-Copy
-Edit
+
 console.log(Date.now());
 // Output: 1741234567890
 3️⃣ Menggunakan +new Date() (cara cepat)
 
-js
-Copy
-Edit
+
 console.log(+new Date());
 // Output: 1741234567890
 Tanda + di sini bekerja seperti konversi tipe data.
@@ -1255,9 +1231,7 @@ Hasilnya adalah timestamp (jumlah milidetik).
 Ilustrasi Sederhana
 Coba lihat bagaimana tanda + mengubah tipe data:
 
-js
-Copy
-Edit
+
 console.log("42");    // Output: "42" (string)
 console.log(+"42");   // Output: 42 (number)
 console.log(+true);   // Output: 1 (number)
@@ -1278,9 +1252,7 @@ Selain tanda + untuk konversi ke number, JavaScript memiliki beberapa operator a
 1️⃣ Number() – Konversi ke Number Secara Eksplisit
 Jika ingin cara yang lebih jelas dan eksplisit, gunakan Number():
 
-js
-Copy
-Edit
+
 console.log(Number("42"));    // Output: 42
 console.log(Number(true));    // Output: 1
 console.log(Number(false));   // Output: 0
@@ -1291,9 +1263,7 @@ console.log(Number(new Date())); // Output: 1741234567890
 2️⃣ parseInt() – Konversi ke Bilangan Bulat
 Jika hanya butuh angka bulat, gunakan parseInt():
 
-js
-Copy
-Edit
+
 console.log(parseInt("42.99"));  // Output: 42 (dibulatkan ke bawah)
 console.log(parseInt("100px"));  // Output: 100 (mengabaikan "px")
 console.log(parseInt("abc100")); // Output: NaN (tidak bisa dikonversi)
@@ -1302,18 +1272,14 @@ console.log(parseInt("abc100")); // Output: NaN (tidak bisa dikonversi)
 3️⃣ parseFloat() – Konversi ke Bilangan Desimal
 Jika ingin angka desimal (floating point):
 
-js
-Copy
-Edit
+
 console.log(parseFloat("42.99")); // Output: 42.99
 console.log(parseFloat("100px")); // Output: 100
 console.log(parseFloat("abc100")); // Output: NaN
 ✅ Berguna untuk angka dengan desimal.
 
 4️⃣ ~~ (Bitwise NOT Ganda) – Cara Cepat Konversi ke Integer
-js
-Copy
-Edit
+
 console.log(~~42.99);  // Output: 42
 console.log(~~-42.99); // Output: -42
 console.log(~~"10");   // Output: 10
@@ -1324,9 +1290,7 @@ console.log(~~true);   // Output: 1
 5️⃣ !! – Konversi ke Boolean
 Jika ingin mengonversi ke true/false, gunakan !!:
 
-js
-Copy
-Edit
+
 console.log(!!1);       // Output: true
 console.log(!!0);       // Output: false
 console.log(!!"hello"); // Output: true
@@ -1338,9 +1302,7 @@ console.log(!!undefined); // Output: false
 6️⃣ .toString() – Konversi ke String
 Jika ingin mengubah angka menjadi string:
 
-js
-Copy
-Edit
+
 console.log((42).toString());   // Output: "42"
 console.log((3.14).toString()); // Output: "3.14"
 console.log(true.toString());   // Output: "true"
@@ -1350,9 +1312,7 @@ console.log(true.toString());   // Output: "true"
 7️⃣ JSON.parse() – Konversi String ke Objek atau Tipe Data Asli
 Jika memiliki string dalam format JSON, bisa diubah ke objek atau tipe data aslinya.
 
-js
-Copy
-Edit
+
 console.log(JSON.parse("42"));          // Output: 42 (Number)
 console.log(JSON.parse("true"));        // Output: true (Boolean)
 console.log(JSON.parse("[1,2,3]"));     // Output: [1, 2, 3] (Array)
@@ -1363,9 +1323,7 @@ console.log(JSON.parse('{"name":"Ali"}')); // Output: { name: "Ali" } (Object)
 8️⃣ JSON.stringify() – Konversi ke String JSON
 Jika ingin mengubah objek, array, atau nilai lain ke string JSON, gunakan:
 
-js
-Copy
-Edit
+
 console.log(JSON.stringify(42));        // Output: "42"
 console.log(JSON.stringify(true));      // Output: "true"
 console.log(JSON.stringify([1, 2, 3])); // Output: "[1,2,3]"
@@ -1375,9 +1333,7 @@ console.log(JSON.stringify({ name: "Ali" })); // Output: '{"name":"Ali"}'
 9️⃣ Boolean() – Konversi ke Boolean Secara Eksplisit
 Selain !!, kita juga bisa menggunakan Boolean().
 
-js
-Copy
-Edit
+
 console.log(Boolean(1));        // Output: true
 console.log(Boolean(0));        // Output: false
 console.log(Boolean("hello"));  // Output: true
@@ -1389,9 +1345,7 @@ console.log(Boolean(undefined));// Output: false
 🔟 Operator | 0 – Konversi Cepat ke Bilangan Bulat
 Bitwise OR dengan 0 bisa digunakan untuk mengubah angka desimal menjadi bilangan bulat.
 
-js
-Copy
-Edit
+
 console.log(42.99 | 0); // Output: 42
 console.log(-42.99 | 0); // Output: -42
 console.log("10" | 0);   // Output: 10
@@ -1401,9 +1355,7 @@ console.log("abc" | 0);  // Output: 0 (karena bukan angka)
 1️⃣1️⃣ Math.floor(), Math.ceil(), Math.round() – Konversi ke Bilangan Bulat dengan Aturan Tertentu
 Jika ingin mengontrol bagaimana angka dibulatkan:
 
-js
-Copy
-Edit
+
 console.log(Math.floor(4.9));  // Output: 4 (dibulatkan ke bawah)
 console.log(Math.ceil(4.1));   // Output: 5 (dibulatkan ke atas)
 console.log(Math.round(4.5));  // Output: 5 (dibulatkan ke terdekat)
@@ -1413,10 +1365,89 @@ console.log(Math.trunc(4.9));  // Output: 4 (menghapus angka desimal)
 1️⃣2️⃣ toFixed() – Konversi ke String dengan Jumlah Desimal Tertentu
 Jika ingin memastikan angka memiliki jumlah desimal tetap:
 
-js
-Copy
-Edit
+
 console.log((3.14159).toFixed(2));  // Output: "3.14"
 console.log((3).toFixed(2));        // Output: "3.00"
 ✅ Berguna untuk tampilan angka dalam keuangan atau statistik.
 ❌ Hasilnya dalam bentuk string, bukan number.
+
+Pengenalan Web Storage
+Selamat datang di modul Web Storage! Sebelumnya, kita telah mempelajari Object Browser Model, Document Object Model, dan Event untuk membuat halaman web lebih dinamis. Namun, bagaimana cara menyimpan data pengguna agar dapat diakses kembali oleh JavaScript?
+
+Alih-alih menggunakan database, kita dapat memanfaatkan fitur bawaan browser, yaitu Web Storage. Dalam modul ini, Anda akan mempelajari:
+
+Konsep dan fungsi Web Storage.
+Jenis Web Storage: localStorage dan sessionStorage.
+Cara menambahkan, memodifikasi, dan menghapus data di Web Storage.
+Menyimpan data kompleks menggunakan JSON.
+Jangan ragu untuk bertanya di Forum Diskusi, dan bantu peserta lain jika memungkinkan. Selamat belajar! 🚀
+
+
+
+Pengertian dan Fungsi Web Storage
+Web Storage adalah Web API yang memungkinkan penyimpanan data secara lokal di sisi client tanpa bergantung pada server. Berbeda dengan objek atau array JavaScript yang bersifat sementara, data di Web Storage tetap ada meskipun halaman di-reload atau URL berubah.
+
+Data disimpan berdasarkan domain, dengan kapasitas hingga 10MB per domain. Ini mengurangi ketergantungan pada database dan meningkatkan efisiensi, terutama dalam:
+
+Menyimpan data yang dapat diakses offline.
+Menyimpan preferensi pengguna, seperti tema atau tata letak.
+Tanpa Web Storage, data yang sama harus diunduh berulang kali, memperlambat kinerja web. Selanjutnya, kita akan membahas jenis-jenis Web Storage! 🚀
+
+
+
+
+Jenis-Jenis Web Storage & Cara Mengeceknya
+Web Storage terdiri dari localStorage dan sessionStorage. Sebelum menggunakannya, pastikan browser mendukung fitur ini dengan menjalankan perintah berikut di console browser:
+
+
+typeof(Storage);
+Jika output tidak menunjukkan "undefined", maka Web Storage didukung (umumnya sudah tersedia di Chrome & Firefox).
+
+Mekanisme Penyimpanan
+Web Storage menyimpan data dalam key-value format, mirip dengan sistem loker:
+
+Key = Kunci unik untuk mengakses data.
+Value = Data yang disimpan (number, boolean, string, atau objek dalam JSON).
+Melihat Data di DevTools
+Google Chrome → Tab Application > Storage
+Mozilla Firefox → Tab Storage
+Selanjutnya, kita akan membahas cara kerja localStorage dan sessionStorage secara lebih detail! 🚀
+
+
+
+
+Local Storage
+Local Storage digunakan untuk menyimpan data secara permanen di browser, bahkan setelah tab atau browser ditutup. Data hanya akan hilang jika dihapus secara manual.
+
+Cara Menggunakan Local Storage
+Menyimpan data:
+
+localStorage.setItem("key", "value");
+Mengambil data:
+
+let data = localStorage.getItem("key");
+Menghapus data:
+
+localStorage.removeItem("key");
+Catatan
+Pada HTML lama, <main align="center"> digunakan untuk pemusatan elemen, tetapi kini direkomendasikan menggunakan CSS untuk styling.
+
+Kesimpulan:
+Local Storage memungkinkan penyimpanan data yang persisten, meskipun browser ditutup. Data hanya akan terhapus jika dihapus secara manual atau menggunakan kode. 🚀
+
+
+Session Storage
+Session Storage menyimpan data sementara di browser. Data akan tetap ada jika halaman di-refresh, tetapi akan hilang saat tab atau browser ditutup.
+
+Cara Menggunakan Session Storage
+Menyimpan data:
+
+sessionStorage.setItem("key", "value");
+Mengambil data:
+
+let data = sessionStorage.getItem("key");
+Menghapus data:
+
+sessionStorage.removeItem("key");
+Kesimpulan:
+Session Storage cocok untuk data sementara yang hanya diperlukan selama sesi berlangsung. Selanjutnya, kita akan mengimplementasikan localStorage dan sessionStorage dalam studi kasus! 🚀
